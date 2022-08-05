@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+
+app_list_show:
+   path: /list/detail/{id}
+   controller: App\Controller\ListController::show
