@@ -1,0 +1,97 @@
+{# templates/security/login.html.twig #} {% extends 'base.html.twig' %} {% block body %}
+<nav
+      class="navbar navbar-expand-lg navbar-light bg-light"
+      style="height: 70px;"
+    >
+      <a class="navbar-brand" href="#">Login/Register App</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+      <ul class="nav navbar-nav navbar-right">
+      
+      <li><a class="nav-link" href="{{ path('app_logout') }}">Login</a></li>
+      {# {% if app.user %}
+      {% else %}
+      <li><a class="nav-link" href="{{ path('app_login') }}">Login</a></li>
+      <li>
+          <a class="nav-link" href="{{ path('registration') }}">Register</a>
+        </li>
+      {% endif %} #}
+      </ul>
+
+      
+    </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 ml-md-auto">
+      <div class="">
+        <div class="card bg-light mb-3 mt-5" style="width: 800px;">
+          <div class="card-body">
+            <form class="form-horizontal" action="/list" role="form" method="post">
+              <AmpContent>
+              {% if error %}
+                <div>
+                  {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+              {% endif %}
+              
+</NonAmpContent> <AmpContent>
+              {% if last_username != null %}
+              <div class="mb-3">
+                You are logged in as {{ last_username }},
+                <a href="{{ path('app_logout') }}">Logout</a>
+              </div>
+              {% endif %}
+              
+</NonAmpContent>
+              <div class="card-header mb-3">Please sign in</div>
+              <div class="form-group">
+              
+              
+                <label for="email" class="col-md-4 control-label"
+                  >E-Mail Address</label
+                >
+                <div class="col-md-12">
+                  <input
+                    id="inputEmail"
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    value="{{ last_username }}"
+                    required
+                    autofocus
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-md-4 control-label"
+                  >Password</label
+                >
+                <div class="col-md-12">
+                  <input
+                    id="inputPassword"
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    required
+                  />
+                </div>
+              </div>
+              <input
+                type="hidden"
+                name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+              />
+              <div class="form-group">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-btn fa-sign-in"></i> Login
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
