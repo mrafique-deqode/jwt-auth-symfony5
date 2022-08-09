@@ -1,0 +1,50 @@
+{# templates/list/index.html.twig #} {% extends 'base.html.twig' %} {% block
+body %}
+<nav
+      class="navbar navbar-expand-lg navbar-light bg-light"
+      style="height: 70px;"
+    >
+      <a class="navbar-brand" href="#">Login/Register App</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+      <ul class="nav navbar-nav navbar-right">
+      
+      <li><a class="nav-link" href="{{ path('app_logout') }}">Logout</a></li>
+      
+      </ul>
+
+      
+    </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-light mb-3 mt-3">
+        <div class="card-body">
+          <div class="card-header">List of posts available</div>
+          <AmpContent>
+          <table class="table">
+            <tr>
+              <th style="width: 3%;">Id</th>
+              <th style="width: 7%;">Title</th>
+              <th>Body</th>
+              <th style="width: 10%;">Publish Date</th>
+            </tr>
+            {% for item in records %}
+            
+            <tr>
+              <td>{{ item.id }}</td>
+              <td>{{ item.title }}</td>
+              <td>{{ item.body[:150] ~ '...' }} <a href="{{ path('app_list_show', {'id': item.id}) }}">Read More</a></td>
+              <td>{{ item.publishDate|date('m-d-Y') }}</td>
+            </tr>
+            
+            {% endfor %}
+          </table>
+          {{ knp_pagination_render(records) }}
+          
+</NonAmpContent>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

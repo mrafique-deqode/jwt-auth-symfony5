@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %} {% block
+body %}
+<nav
+      class="navbar navbar-expand-lg navbar-light bg-light"
+      style="height: 70px;"
+    >
+      <a class="navbar-brand" href="#">NeoTech Test By Mohammed Rafique</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+      <ul class="nav navbar-nav navbar-right">
+      
+      <li><a class="nav-link" href="{{ path('app_logout') }}">Logout</a></li>
+      
+      </ul>
+
+      
+    </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-light mb-3 mt-3">
+        <div class="card-body">
+          <AmpContent>
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <td>{{ records.title }}</td>
+                </tr>
+                <tr>
+                    <th>Publish Date</th>
+                    <td>{{ records.publishDate|date('m-d-Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Body</th>
+                    <td>{{ records.body }}</td>
+                </tr>
+            </table>
+          <NonAmpContent>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
